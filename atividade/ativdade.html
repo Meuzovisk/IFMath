@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- FIM GOOGLE FONTES -->
+    <!-- BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="shortcut icon" href="../images/logosite.png" type="image/x-icon">
+    <!-- FIM BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="style.css">
+    <title>Atividade</title>
+
+</head>
+<body>
+    <header>
+        <div class="interface">
+            <div class="logo">
+                <a href="#">
+                    <img src="../images/logo.png" alt="Logo do IF Math" width="100px">
+                </a>
+            </div><!--logo-->
+
+            <nav class="menu-desktop">
+                <ul>
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="#menu-desktop">Atividades</a></li>
+                </ul>
+            </nav>
+
+            <div class="btn-contato">
+                <a href="#formulario">
+                    <button>Contato</button>
+                </a>
+            </div><!--btn-contato-->
+
+            <div class="btn-abrir-menu" id="btn-menu">
+                <i class="bi bi-list"></i>
+            </div>
+
+            <div class="menu-mobile" id="menu-mobile">
+                <div class="btn-fechar">
+                    <i class="bi bi-x-lg"></i>
+                </div>
+
+                <nav>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#">Especialidades</a></li>
+                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#">Projetos</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </nav>
+
+            </div><!--menu-mobile-->
+            <div class="overlay-menu" id="overlay-menu"></div>
+        </div><!--interface-->
+    </header>
+
+
+    <div id="question-container">
+        <h1>Perguntas sobre Função Afim</h1>
+        <p id="question"></p>
+        <input type="text" id="answer" placeholder="Sua resposta">
+        <br><br>
+        <button onclick="checkAnswer()">Verificar Resposta</button>
+    </div>
+    <section id="formulario">
+        <div class="interface">
+            <h2 class="titulo">FALE <span>CONOSCO.</span></h2>
+
+            <form action="">
+                <input type="text" name="" id="" placeholder="Seu nome completo:" required>
+                <input type="text" name="" id="" placeholder="Seu e-mail:" required>
+                <input type="text" name="" id="" placeholder="Seu celular:">
+                <textarea name="" id="" placeholder="Sua mensagem" required></textarea>
+                <div class="btn-enviar"><input type="submit" value="ENVIAR"></div>
+            </form>
+        </div><!--interface-->
+    </section><!--formulario-->
+
+</main>
+
+<footer>
+    <div class="interface">
+        <div class="line-footer">
+            <div class="flex">
+                <div class="logo-footer">
+                    <img src="../images/logo.png" alt="Logotipo IF charset">
+                </div><!--logo-footer-->
+                <div class="btn-social">
+                    <a href="" target="_blank"><button><i class="bi bi-instagram"></i></button></a>
+                    <a href="" target="_blank"><button><i class="bi bi-youtube"></i></button></a>
+                </div><!--btn-social-->
+            </div>
+        </div><!--line-footer-->
+
+        <div class="line-footer borda">
+            <p><i class="bi bi-envelope-fill"></i> <a href="mailto:naomandemensagem@ifmath.com.br">naomandemensagem@ifcast.com.br</a></p>
+        </div><!--line-footer-->
+    </div><!--interface-->
+</footer>
+
+    <script>
+        // Defina as perguntas e respostas
+        const questions = [
+            { question: 'Qual é a expressão de uma função afim?', answer: 'f(x)=ax+b' },
+            { question: 'O que representa "a" na equação de uma função afim?', answer: 'Coeficiente angular' },
+            { question: 'O que representa "b" na equação de uma função afim?', answer: 'Coeficiente linear' },
+            { question: 'Se uma indústria produz R$9.100,00 e o valor váriavel por peça é R$0,30. Sabendo que o preço de venda de cada peça é de R$ 1,60, quantas peças ele precisa produzir pra não ter prejuizo'
+            , answer: '7.000' },
+            { question: 'Um atleta ao ser submetido a um determinado treino específico apresenta, ao longo do tempo, ganho de massa muscular. A função P(t) = P0 + 0,19 t, expressa o peso do atleta em função do tempo ao realizar esse treinamento, sendo P0 o seu peso inicial e t o tempo em dias. Considere um atleta que antes do treinamento apresentava 55 kg e que necessita chegar ao peso de 60 kg, em um mês. Fazendo unicamente esse treinamento, será possível alcançar o resultado esperado?', answer: 'Sim' },
+            
+            // Adicione mais perguntas conforme necessário
+        ];
+
+        // Função para exibir uma pergunta aleatória
+        function showRandomQuestion() {
+            const randomIndex = Math.floor(Math.random() * questions.length);
+            const questionElement = document.getElementById('question');
+            questionElement.textContent = questions[randomIndex].question;
+        }
+
+        // Função para verificar a resposta
+        function checkAnswer() {
+            const userAnswer = document.getElementById('answer').value.toLowerCase();
+            const correctAnswer = questions.find(q => q.question === document.getElementById('question').textContent).answer.toLowerCase();
+
+            if (userAnswer === correctAnswer) {
+                alert('Resposta correta! Parabéns!');
+            } else {
+                alert('Resposta incorreta. Tente novamente.');
+            }
+
+            // Exiba uma nova pergunta aleatória após verificar a resposta
+            showRandomQuestion();
+            document.getElementById('answer').value = ''; // Limpe o campo de resposta
+        }
+
+        // Exiba a primeira pergunta ao carregar a página
+        showRandomQuestion();
+    </script>
+</body>
+</html>
